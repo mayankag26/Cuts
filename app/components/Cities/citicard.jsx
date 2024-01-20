@@ -1,8 +1,10 @@
 "use client"
 import React from "react";
 import {Card, CardBody, CardFooter, Image} from "@nextui-org/react";
-
+import Link from 'next/link';
+import { useRouter } from "next/navigation";
 export default function CitiCard() {
+  const router = useRouter()
   const list = [
     {
       title: "Mumbai",
@@ -32,16 +34,21 @@ export default function CitiCard() {
 
   return (
     <div className="w-full gap-2 grid grid-cols-4 sm:grid-cols-6">
+     
       {list.map((item, index) => (
         <Card shadow="sm" key={index} isPressable onPress={() => console.log("item pressed")}>
+        
           <CardBody className="overflow-visible p-0">
-            <Image
+
+        <Link href={`/locations/`+item.title} >
+          <Image
               radius="lg"
               width="100%"
               alt={item.title}
               className="w-full object-contain h-[80px]"
               src={item.img}
             />
+         </Link> 
           </CardBody>
           <CardFooter className="text-small flex justify-center items-center">
             <b className="text-center">{item.title}</b>

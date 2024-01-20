@@ -4,6 +4,7 @@ import headerPic from '/public/headerpic.jpg'
 
 export default function Hero() {
     return (
+        
         <div className='relative'>
             <div>
                 <Image src={headerPic} alt="salon" className='w-full h-[80vh] object-cover' />
