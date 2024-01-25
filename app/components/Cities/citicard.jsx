@@ -3,8 +3,13 @@ import React from "react";
 import {Card, CardBody, CardFooter, Image} from "@nextui-org/react";
 import Link from 'next/link';
 import { useRouter } from "next/navigation";
+
 export default function CitiCard() {
-  const router = useRouter()
+ const router = useRouter();
+  const navigate=(name)=>{
+    router.push(name)
+  }
+
   const list = [
     {
       title: "Mumbai",
@@ -32,11 +37,12 @@ export default function CitiCard() {
     },    
   ];
 
+
   return (
     <div className="w-full gap-2 grid grid-cols-4 sm:grid-cols-6">
      
       {list.map((item, index) => (
-        <Card shadow="sm" key={index} isPressable onPress={() => console.log("item pressed")}>
+        <Card shadow="sm" key={index} isPressable onPress={()=>{navigate(`/locations/`+item.title)}}>
         
           <CardBody className="overflow-visible p-0">
 
