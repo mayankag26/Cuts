@@ -3,6 +3,7 @@ import React from "react";
 import { Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Button, NavbarMenuToggle, NavbarMenu, NavbarMenuItem, DropdownItem, DropdownTrigger, Dropdown, DropdownMenu, Avatar } from "@nextui-org/react";
 import { useSession } from "next-auth/react";
 import { signOut } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 // import {AcmeLogo} from "./AcmeLogo.jsx";
 
@@ -11,7 +12,9 @@ export default function Nav() {
 
   const { status, data } = useSession();
   console.log(status);
-
+ 
+  const router = useRouter();
+  
   // const menuItems = [
   //   "Login",
   //   "Sign Up",
@@ -25,7 +28,7 @@ export default function Nav() {
           aria-label={isMenuOpen && status=="authenticated" ? "Close menu" : "Open menu"}
           className="sm:hidden"
         /> */}
-        <NavbarBrand>
+        <NavbarBrand className="cursor-pointer" onClick={()=>router.push('/')}>
           {/* <AcmeLogo /> */}
           <p className="font-bold text-inherit">CUTS</p>
         </NavbarBrand>
@@ -60,9 +63,9 @@ export default function Nav() {
                     as="button"
                     className="transition-transform"
                     color="secondary"
-                    name="Jason Hughes"
+                    name="Default avatar"
                     size="sm"
-                    src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
+                    src="default_avatar.png"
                   />
                 </DropdownTrigger>
                 <DropdownMenu aria-label="Profile Actions" variant="flat">
@@ -70,8 +73,8 @@ export default function Nav() {
                     <p className="font-semibold">Signed in as</p>
                     <p className="font-semibold">{data.user.email}</p>
                   </DropdownItem>
-                  <DropdownItem key="settings">My Profile</DropdownItem>
-                  <DropdownItem key="logout" color="danger" onClick={()=>signOut()} >
+                  <DropdownItem key="settings" onClick={()=>router.push('/profile')}>My Profile</DropdownItem>
+                  <DropdownItem key="logout" color="danger" onClick={()=>signOut({callbackUrl:'/'})} >
                     Log Out
                   </DropdownItem>
                 </DropdownMenu>

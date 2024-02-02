@@ -11,7 +11,7 @@ export async function POST(req) {
     return NextResponse.json({ user });
   } catch (error) {
     return NextResponse.json(
-      { message: "error occured from register/route" },
+      { message: "error: ",error },
       { status: 500 }
     );
   }
