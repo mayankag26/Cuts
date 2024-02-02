@@ -75,7 +75,7 @@ const Shops = () => {
             <div className="flex justify-between"><h1>{item.name}</h1><button className="bg-blue-300">{item.star}⭐</button></div>
             <div>{item.details}</div>
             <h3>Queue: {item.queue}</h3>
-            <Link href={`/profile/${item.navigation}`}>
+            <Link href={`/${item.navigation}`}>
             Navigate
             </Link>
           </div>

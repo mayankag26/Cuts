@@ -1,0 +1,50 @@
+
+Users - 
+Name                        -          String
+User id                     - 
+Contact Number              -          Number
+Email                       -          String
+Address,                    -          String
+//Booking history             -        Create bookings collection and write bookingid here
+
+
+
+Salons-
+Salon name,                 -          String
+Salon email                 -          String
+Salon id                    -          
+Salon Images                -          
+Salon address,              -          String
+Salon city                  -          String
+Services,                   -          Array of object
+Salon rating,               -          Number 
+Salon Reviews,              -          Images    -   Link 
+                                       Comments  -   String
+Salon type                  -          String ("Salon/Individual")
+For salon type salons:
+Salon opening time,         -          Number
+Salon closing time,         -          Number
+Current Number,             -          Number
+Available Number,           -          Number
+
+For salon type Individual:
+Salon time slots all           -       Array of objects   
+Salon time slots available     -       
+
+
+
+Bookings -
+Booking id                  -           
+User id                     - 
+Salon id                    -
+Booking time                -
+Booking bill value          -         
+Booking rating              -         Number
+Booking review              -         String
+Booking review image        -         Link
+
+
+
+
+
+
