@@ -6,6 +6,7 @@ import Post from "../userReviews";
 
 const barber = [
   {
+    index:1,
     img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmMDR_xBK0w6ZHYCpHrE4krxcFe6wT3ZKxIQ&usqp=CAU",
     name: "Hair Slayer",
     city: "Lucknow",
@@ -106,12 +107,12 @@ export default function Profile() {
             </div>
           </div>
         </div>
-        <div class="sm:text-0.5xl md:text-1xl lg:text-2xl xl:text-2.5xl font-bold flex flex-row justify-between w-full">
+        <div className="sm:text-0.5xl md:text-1xl lg:text-2xl xl:text-2.5xl font-bold flex flex-row justify-between w-full">
           <div>{barber[0].name}</div>
           <div>
-            <div class="flex items-center">
+            <div className="flex items-center">
               <svg
-                class="w-4 h-4 text-yellow-300 me-1"
+                className="w-4 h-4 text-yellow-300 me-1"
                 aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="currentColor"
@@ -119,13 +120,13 @@ export default function Profile() {
               >
                 <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
               </svg>
-              <p class="ms-1 text-sm font-medium text-gray-500 dark:text-gray-400 ">
+              <p className="ms-1 text-sm font-medium text-gray-500 dark:text-gray-400 ">
                 4.95
               </p>
-              <p class="ms-1 text-sm font-medium text-gray-500 dark:text-gray-400">
+              <p className="ms-1 text-sm font-medium text-gray-500 dark:text-gray-400">
                 out of
               </p>
-              <p class="ms-1 text-sm font-medium text-gray-500 dark:text-gray-400">
+              <p className="ms-1 text-sm font-medium text-gray-500 dark:text-gray-400">
                 5
               </p>
             </div>
@@ -145,18 +146,18 @@ export default function Profile() {
         </div>
 
         <div className="flex flex-row py-1">
-          <div class="rounded-lg px-3 py-2.5 text-sm font-semibold border-1 border-black shadow-sm hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black">
+          <div className="rounded-lg px-3 py-2.5 text-sm font-semibold border-1 border-black shadow-sm hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black">
             Current Number in queue : {barber[0].currentNumber}
           </div>
           <div className="lg:w-4 md:w-1"></div>
-          <div class="rounded-lg  px-3 py-2.5 text-sm font-semibold border-1 border-black shadow-sm hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black">
+          <div className="rounded-lg  px-3 py-2.5 text-sm font-semibold border-1 border-black shadow-sm hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black">
             Available Number : {barber[0].availableNumber}
           </div>
         </div>
         <div>
           <button
             type="button"
-            class="rounded-lg px-10 py-3 text-sm font-semibold border-1 bg-blue-900 text-white border-black shadow-sm hover:bg-blue-600 hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+            className="rounded-lg px-10 py-3 text-sm font-semibold border-1 bg-blue-900 text-white border-black shadow-sm hover:bg-blue-600 hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
           >
             BOOK SLOT NOW
           </button>

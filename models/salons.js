@@ -17,6 +17,9 @@ const SalonSchema = new Schema(
     address: {
       type: String
     },
+    detail: {
+      type: String
+    },
     city: {
       type: String
     },

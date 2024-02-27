@@ -1,5 +1,6 @@
 "use client"
 import React from "react";
+import { usePathname } from "next/navigation";
 import { Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Button, NavbarMenuToggle, NavbarMenu, NavbarMenuItem, DropdownItem, DropdownTrigger, Dropdown, DropdownMenu, Avatar } from "@nextui-org/react";
 import { useSession } from "next-auth/react";
 import { signOut } from "next-auth/react";
@@ -19,10 +20,19 @@ export default function Nav() {
   //   "Login",
   //   "Sign Up",
   // ];
-
-  return (
-    // <Navbar onMenuOpenChange={setIsMenuOpen}>
+  const pathName=usePathname();
+  switch (pathName) {
+    case "/login":
+      return null;
+    case "/register":
+      return null;
+    default:
+       return (
+    <div>
+    {/* // <Navbar onMenuOpenChange={setIsMenuOpen}> */}
+   
     <Navbar>
+
       <NavbarContent>
         {/* <NavbarMenuToggle
           aria-label={isMenuOpen && status=="authenticated" ? "Close menu" : "Open menu"}
@@ -137,5 +147,8 @@ export default function Nav() {
         ))}
       </NavbarMenu> */}
     </Navbar>
+  
+   </div>
   );
+    }
 }

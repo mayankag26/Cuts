@@ -1,6 +1,17 @@
+"use client"
+import { usePathname } from "next/navigation"
+
 export default function Footer() {
-  return (
-    <section className="relative overflow-hidden py-10 mt-20 bg-gray-300">
+  const pathName=usePathname()
+  switch (pathName) {
+    case "/login":
+      return null;
+    case "/register":
+      return null;
+    default:
+      return (
+        <div>
+      <section className="relative overflow-hidden py-10 mt-20 bg-gray-300">
       <div className="relative z-10 mx-auto max-w-7xl px-4">
         <div className="-m-6 flex flex-wrap">
           <div className="w-full p-6 md:w-1/2 lg:w-5/12">
@@ -113,5 +124,8 @@ export default function Footer() {
         </div>
       </div>
     </section>
-  )
+   
+    </div>
+  );
+ }
 }
