@@ -113,7 +113,9 @@ export default function Profile(props) {
           </div>
         </div>
         <div className="sm:text-0.5xl md:text-1xl lg:text-2xl xl:text-2.5xl font-bold flex flex-row justify-between w-full">
+          
           <div>{barber.name}</div>
+
           <div>
             <div className="flex items-center">
               <svg
@@ -127,6 +129,7 @@ export default function Profile(props) {
               </svg>
               <p className="ms-1 text-sm font-medium text-gray-500 dark:text-gray-400 ">
                   {barber.rating}
+
               </p>
               <p className="ms-1 text-sm font-medium text-gray-500 dark:text-gray-400">
                 out of
@@ -157,6 +160,7 @@ export default function Profile(props) {
           <div className="lg:w-4 md:w-1"></div>
           <div className="rounded-lg  px-3 py-2.5 text-sm font-semibold border-1 border-black shadow-sm hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black">
             Available Number : {barber.availableNumber}
+
           </div>
         </div>
         <div>
