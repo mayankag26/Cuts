@@ -1,5 +1,6 @@
 import "./index.css";
 import Link from "next/link";
+
 async function getSalons(location) {
   try {
 

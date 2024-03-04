@@ -13,6 +13,7 @@ const Page = ({ params }) => {
       <div className='text-4xl mt-8  -translate-x-1.5 lg:mx-16'>Hair Salons In {params.city}</div> 
        {/* <Divider className='bg-gray-900   '></Divider> */}
       </div>
+
       <div className='shops pt-10'>
       <Shops location={`${params.city}`}></Shops>  
       </div>     

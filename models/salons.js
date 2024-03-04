@@ -35,6 +35,9 @@ const SalonSchema = new Schema(
     reviews: {
       type: []  //array of two object, first object with key images and other object with key comments
     },
+    comments:{
+      type:[]  //array of comments 
+    },
     salontype: {
       type: String  //two options - "salon" and "individual"
     },

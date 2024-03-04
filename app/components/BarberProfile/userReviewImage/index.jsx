@@ -3,7 +3,7 @@ import React from "react";
 
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-const Slider = () => {
+const Slider = ({reviews}) => {
   const responsive = {
     // superLargeDesktop: {
     //   // the naming can be any, depends on you.
@@ -24,61 +24,71 @@ const Slider = () => {
     },
   };
 
-  const list = [
+  let list = [
     {
-      details: "Lorem ipsum dolor sit amet, <br/ consectetur adipiscing elit.",
+      id:1,
+      comment: "Comment1",
       name: "Hair salon",
-      img: "https://t3.ftcdn.net/jpg/05/06/74/32/360_F_506743235_coW6QAlhxlBWjnRk0VNsHqaXGGH9F4JS.jpg",
+      image: "https://t3.ftcdn.net/jpg/05/06/74/32/360_F_506743235_coW6QAlhxlBWjnRk0VNsHqaXGGH9F4JS.jpg",
     },
     {
-      details: "Lorem ipsum dolor sit amet, <br/ consectetur adipiscing elit.",
+      id:2,
+      comment: "Lorem ipsum dolor sit amet, <br/ consectetur adipiscing elit.",
       name: "Hair salon",
-      img: "https://t3.ftcdn.net/jpg/05/06/74/32/360_F_506743235_coW6QAlhxlBWjnRk0VNsHqaXGGH9F4JS.jpg",
+      image: "https://t3.ftcdn.net/jpg/05/06/74/32/360_F_506743235_coW6QAlhxlBWjnRk0VNsHqaXGGH9F4JS.jpg",
     },
 
     {
-      details: "Lorem ipsum dolor sit amet, <br/ consectetur adipiscing elit.",
+      id:3,
+      comment: "Lorem ipsum dolor sit amet, <br/ consectetur adipiscing elit.",
       name: "Hair salon",
-      img: "https://t3.ftcdn.net/jpg/05/06/74/32/360_F_506743235_coW6QAlhxlBWjnRk0VNsHqaXGGH9F4JS.jpg",
+      image: "https://t3.ftcdn.net/jpg/05/06/74/32/360_F_506743235_coW6QAlhxlBWjnRk0VNsHqaXGGH9F4JS.jpg",
     },
     {
-      details: "Lorem ipsum dolor sit amet, <br/ consectetur adipiscing elit.",
+      id:4,
+      comment: "Lorem ipsum dolor sit amet, <br/ consectetur adipiscing elit.",
       name: "Hair salon",
-      img: "https://t3.ftcdn.net/jpg/05/06/74/32/360_F_506743235_coW6QAlhxlBWjnRk0VNsHqaXGGH9F4JS.jpg",
+      image: "https://t3.ftcdn.net/jpg/05/06/74/32/360_F_506743235_coW6QAlhxlBWjnRk0VNsHqaXGGH9F4JS.jpg",
     },
     {
-      details: "Lorem ipsum dolor sit amet, <br/ consectetur adipiscing elit.",
+      id:5,
+      comment: "Lorem ipsum dolor sit amet, <br/ consectetur adipiscing elit.",
       name: "Hair salon",
-      img: "https://t3.ftcdn.net/jpg/05/06/74/32/360_F_506743235_coW6QAlhxlBWjnRk0VNsHqaXGGH9F4JS.jpg",
+      image: "https://t3.ftcdn.net/jpg/05/06/74/32/360_F_506743235_coW6QAlhxlBWjnRk0VNsHqaXGGH9F4JS.jpg",
     },
     {
-      details: "Lorem ipsum dolor sit amet, <br/ consectetur adipiscing elit.",
+      id:6,
+      comment: "Lorem ipsum dolor sit amet, <br/ consectetur adipiscing elit.",
       name: "Hair salon",
-      img: "https://t3.ftcdn.net/jpg/05/06/74/32/360_F_506743235_coW6QAlhxlBWjnRk0VNsHqaXGGH9F4JS.jpg",
+      image: "https://t3.ftcdn.net/jpg/05/06/74/32/360_F_506743235_coW6QAlhxlBWjnRk0VNsHqaXGGH9F4JS.jpg",
     },
     {
-      details: "Lorem ipsum dolor sit amet, <br/ consectetur adipiscing elit.",
+      id:7,
+      comment: "Lorem ipsum dolor sit amet, <br/ consectetur adipiscing elit.",
       name: "Hair salon",
-      img: "https://t3.ftcdn.net/jpg/05/06/74/32/360_F_506743235_coW6QAlhxlBWjnRk0VNsHqaXGGH9F4JS.jpg",
+      image: "https://t3.ftcdn.net/jpg/05/06/74/32/360_F_506743235_coW6QAlhxlBWjnRk0VNsHqaXGGH9F4JS.jpg",
     },
     {
-      details: "Lorem ipsum dolor sit amet, <br/ consectetur adipiscing elit.",
+      id:8,
+      comment: "Lorem ipsum dolor sit amet, <br/ consectetur adipiscing elit.",
       name: "Hair salon",
-      img: "https://t3.ftcdn.net/jpg/05/06/74/32/360_F_506743235_coW6QAlhxlBWjnRk0VNsHqaXGGH9F4JS.jpg",
+      image: "https://t3.ftcdn.net/jpg/05/06/74/32/360_F_506743235_coW6QAlhxlBWjnRk0VNsHqaXGGH9F4JS.jpg",
     },
   ];
+  // console.log(reviews)
+  if(reviews)list=reviews
   return (
     <div className="mt-5">
       <h1 className="text-3xl font-bold text-gray-800 mb-6">User Images </h1>
 
       <Carousel responsive={responsive}>
         {list.map((item, index) => (
-          <div className="container m-auto w-10/12">
+          <div key={index} className="container m-auto w-10/12">
             <div className="">
               <div>
-                <img src={item.img}></img>{" "}
+                <img src={item.image}></img>{" "}
               </div>
-             <div >{item.details}</div>
+             <div >{item.comment}</div>
             </div>
           </div>
         ))}
