@@ -12,8 +12,6 @@ const Page = ({ params }) => {
       <div className='shops pt-20'>
        <Shops></Shops>  
       </div>
-  
-          
     </div>
   )
 }
