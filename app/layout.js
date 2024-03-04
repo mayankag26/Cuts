@@ -3,10 +3,8 @@ import './globals.css'
 import {Providers} from "./providers";
 import Nav from './components/navbar';
 import Footer from './components/footer';
-
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
-
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
@@ -19,9 +17,8 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className}>
       <ToastContainer/> 
-
           <Providers>
-            <Nav/>
+          <Nav></Nav>
             {children}
             <Footer/>
           </Providers>
