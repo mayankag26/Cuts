@@ -75,8 +75,7 @@ const Slider = () => {
         {list.map((item, index) => (
           <div className="m-[100px] ">
             <div className=" mt-4 flex justify-center">
-              <button type="button" class="text-gray-900  text-[40px] focus:ring-4 focus:outline-none focus:ring-blue-200 dark:focus:ring-teal-700  rounded-lg  text-center p-3">{item.name}</button>
-            
+              <button type="button" className="text-gray-900  text-[40px] focus:ring-4 focus:outline-none focus:ring-blue-200 dark:focus:ring-teal-700  rounded-lg  text-center p-3">{item.name}</button>
             </div>
           </div>
         ))}
@@ -86,4 +85,3 @@ const Slider = () => {
 };
 
 export default Slider;
-

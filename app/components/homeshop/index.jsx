@@ -1,11 +1,11 @@
-"use client";
-import { useState, useEffect } from "react";
-import "./index.css";
-import Link from "next/link";
+import React from 'react'
+import { useState, useEffect } from 'react';
+
+import Link from 'next/link';
 // async function getSalons(location) {
 //   try {
 
-//     let response = await fetch(`/api/salons/${location}` ,{
+//     let response = await fetch(`http://localhost:3000/api/salons/${location}` ,{
 //       cache : "no-store",
 //     })
 //     // console.log(response)
@@ -29,11 +29,11 @@ function checkHomeshop(currentshop) {
 
   // console.log("Salon Type:", currentshop.salontype);
 
-  return currentshop.salontype === 'salon';
+  return currentshop.salontype === 'individual';
 }
- function Shops(props) {
-  
-   const [list, setList]=useState([]);
+
+ function  HomeShops(props) {
+  const [list, setList]=useState([]);
   useEffect(() => {
     async function getToken() {
       try {
@@ -41,28 +41,28 @@ function checkHomeshop(currentshop) {
           cache : "no-store",
         })
         const data = await response.json();
-       const list2= (await data)?.result;
-       const res = list2.filter(checkHomeshop);
+        const list2= (await data)?.result;
+        console.log(list2); 
+        const res = list2.filter(checkHomeshop);
+        console.log(res);
         setList(res);
       } catch (err) {
         console.log(err)
       }
-    
-       
     }
     getToken();
-
-
  }, [])
-  // const list = (await getSalons(props.location))?.result;
-  // console.log(list);
+    // const list = (await getSalons(props.location))?.result;
+    // console.log(list); 
+   
   return (
-    <div className="whole" >
+    <div className='whole'>
+
       { 
         list.map((item, _id) => (        
         <div className="card" key={_id} >   
 
-  <div className="relative flex w-full max-w-[23rem] max-h-[30rem] flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-lg">
+ <div className="relative flex w-full max-w-[23rem] max-h-[30rem] flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-lg">
     <div
     className="relative mx-4 mt-4 overflow-hidden text-white shadow-lg rounded-xl bg-blue-gray-500 bg-clip-border shadow-blue-gray-500/40">
     <img
@@ -102,8 +102,9 @@ function checkHomeshop(currentshop) {
       
         </div>
       ))}
+
     </div>
-  );
+  )
 }
 
-export default Shops;
+export default HomeShops

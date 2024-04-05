@@ -14,7 +14,7 @@ export default async function Login() {
 
     let user;
     try {
-        await connectMongoDB();
+        //await connectMongoDB();
         user = await Users.findOne({ email: emailid });
     }
     catch (err) {
