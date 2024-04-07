@@ -7,20 +7,30 @@ import Post from "../userReviews";
 
 export default function Profile(props) {
   const [barber,setBarber]=useState({});
+  const [clicked, setClicked] = useState(false);
   let idd=props.idd
   let img='https://static.vecteezy.com/system/resources/thumbnails/004/141/669/small/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg'
   // console.log(barber)
-  
-
+  let msg="No reviews"
+  const [textareaValue, setTextareaValue] = useState('');
+  const [comments,setComments]=useState('');
+  const handleTextareaChange = (event) => {
+    setTextareaValue(event.target.value);
+  };
+  function handleClicked(){
+    setClicked(true);
+  }
   useEffect(()=>{
     async function getBarber() {
-      let data = await fetch(`http://localhost:3000/api/barber/${idd}`,{method:"GET"});
+      let data = await fetch(`http://localhost:3000/api/barber/${idd}`,{method:"GET"});//fetching data from backend API endpoints
       if (!data.ok) {
         throw new Error(`HTTP error! Status: ${data.status}`);
       }
       try {
         data=await data.json()
+        // console.log(data)
         setBarber(data.result);
+        setComments(data.result.comments)
       } catch (error) {
         console.error(error);
         return { name: "Error fetching data" };
@@ -28,6 +38,31 @@ export default function Profile(props) {
     }
     getBarber()
   },[])
+  useEffect(()=>{
+    if(clicked){
+      async function getComment(){
+        try{
+          let res = await fetch(`http://localhost:3000/api/barber/${idd}`,{
+          method: 'POST',
+          body: JSON.stringify(textareaValue),
+          headers: {
+            'content-type': 'application/json'
+          }})
+          if(!res.ok) throw new Error(`HTTP error! Status: ${res.status}`);
+            res=await res.json();
+            // console.log(res);
+            // console.log(res.result);
+            setComments(res.result.comments)
+            // console.log('goel')
+          }catch(error){
+            console.log(error)
+          }
+          setClicked(false);
+          setTextareaValue('')
+        }
+      getComment();
+    }
+  },[clicked])
   let func = () => {
     var d = new Date();
     const isOpen =
@@ -170,18 +205,34 @@ export default function Profile(props) {
         <div className="my-3 text-lg bg-gray-700 p-2 text-white rounded-lg">
           Services Available
         </div>
+        <div>
+  {/* {barber.services && barber.services.length > 0 ? barber.services[0].service : "No services available"} */}
+  {
+      <div>
+      {barber.services && barber.services.map(x=>(
+        <div>{x.service} MRP Rs {x.cost}/-</div>
+      ))}
+  </div>
+  }
+</div>
         <div className=" w-full border-3 md:border-2 p-4 z-5">
           <Slider reviews={barber.reviews} />
         </div>
         <div className=" w-full border-3 md:border-2 p-4 z-5">
-          <Post comments={barber.comments}/>
+          <Post comments={comments}/>
         </div>
         <div className=" w-full border-3 md:border-2 p-4 z-5">
           <h1 className="text-3xl font-bold text-gray-800 mb-6">
             Write your own comment..
           </h1>
-          <textarea className="border-2 rounded-md p-2 w-full h-full resize-none focus:outline-none focus:ring focus:border-blue-500 "></textarea>  
+          <textarea value={textareaValue} onChange={handleTextareaChange}className="border-2 rounded-md p-2 w-full h-full resize-none focus:outline-none focus:ring focus:border-blue-500"></textarea>  
+          <button onClick={handleClicked} className="rounded-lg px-10 py-3 text-sm font-semibold border-1 bg-blue-900 text-white border-black shadow-sm hover:bg-blue-600 hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black">
+            POST
+            {/* {console.log(textareaValue)}
+            {console.log(clicked)} */}
+          </button>
         </div>
+        {/* <div>{textareaValue}</div> */}
       </div>
     </>
   );
