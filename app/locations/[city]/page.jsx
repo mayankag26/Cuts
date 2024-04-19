@@ -15,10 +15,10 @@ const Page = ({ params }) => {
      <Services color={color} setColor={setColor}></Services>
      <div className='carousel'>
        <Carousel />
-      <div className='text-4xl mt-8  -translate-x-1.5 lg:mx-16'>Hair Salons In {params.city}</div> 
+      <div className='text-4xl mx-3 mt-8  -translate-x-1.5 lg:mx-16'>Hair Salons In {params.city}</div> 
       </div>
       <div className='shops pt-10'> 
-     { (color===1)?<Shops location={`${params.city}`}></Shops>:<HomeShops  location={`${params.city}`}></HomeShops>}    
+     { (color===1)?<Shops location={`${params.city}`}></Shops>:<HomeShops location={`${params.city}`}></HomeShops>}    
       </div>     
     </div>
   )
