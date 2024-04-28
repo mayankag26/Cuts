@@ -41,13 +41,11 @@ const SalonSchema = new Schema(
     salontype: {
       type: String  //two options - "salon" and "individual"
     },
-
-    //for salon type "salon"
     openingTime: {
-      type: Number
+      type: String
     },
     closingTime: {
-      type: Number
+      type: String
     },
     currentNumber : {
       type: Number
@@ -55,8 +53,6 @@ const SalonSchema = new Schema(
     availableNumber : {
       type: Number
     },
-
-    //for salon type "individual"
     timeSlots : {
       type: []  //array of objects with key as time slot and value 0 or 1 specifiying slot available or booked. eg. [ {9-10,1},{10-11,0} ]
     }
