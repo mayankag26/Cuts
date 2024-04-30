@@ -2,7 +2,7 @@ import React from "react";
 
 const ShopLocation = (props) => {
   return (
-    <>
+    <div className="w-full">
       <h1 className="text-3xl font-bold text-gray-800 mb-6">Shop Location</h1>
       <div className="relative flex items-center justify-center w-full dark:text-black-900">
         <iframe
@@ -12,53 +12,10 @@ const ShopLocation = (props) => {
           referrerPolicy="no-referrer-when-downgrade"
         ></iframe>
       </div>
-    </>
+    </div>
   );
 };
 
 export default ShopLocation;
 
 
-// --------------------------------rest components --------------------------------
-
-// <div className="relative flex flex-shrink-0 w-full sm:w-auto">
-//           <div class="bg-white rounded-lg overflow-hidden shadow-lg transition-transform transform hover:scale-105">
-//             <div class="p-1 bg-green-200"></div>
-//             <div class="p-8">
-//               <h2 class="text-3xl font-bold text-gray-800 mb-4">
-//                 Hair Treatment
-//               </h2>
-//               <p class="text-4xl font-bold text-gray-800 mb-6">$49.99</p>
-//             </div>
-//           </div>
-//         </div>
-
-//         <div className="relative flex flex-shrink-0 w-full sm:w-auto">
-//           <div class="bg-white rounded-lg overflow-hidden shadow-lg transition-transform transform hover:scale-105">
-//             <div class="p-1 bg-purple-200"></div>
-//             <div class="p-8">
-//               <h2 class="text-3xl font-bold text-gray-800 mb-4">
-//                 Basic Makeup
-//               </h2>
-//               <p class="text-4xl font-bold text-gray-800 mb-6">$99.99</p>
-//             </div>
-//           </div>
-//         </div>
-//         <div className="relative flex flex-shrink-0 w-full sm:w-auto">
-//           <div class="bg-white rounded-lg overflow-hidden shadow-lg transition-transform transform hover:scale-105">
-//             <div class="p-1 bg-green-200"></div>
-//             <div class="p-8">
-//               <h2 class="text-3xl font-bold text-gray-800 mb-4">Pro Plan</h2>
-//               <p class="text-4xl font-bold text-gray-800 mb-6">$49.99</p>
-//             </div>
-//           </div>
-//         </div>
-//         <div className="relative flex flex-shrink-0 w-full sm:w-auto">
-//           <div class="bg-white rounded-lg overflow-hidden shadow-lg transition-transform transform hover:scale-105">
-//             <div class="p-1 bg-blue-200"></div>
-//             <div class="p-8">
-//               <h2 class="text-3xl font-bold text-gray-800 mb-4">Basic Plan</h2>
-//               <p class="text-4xl font-bold text-gray-800 mb-6">$19.99</p>
-//             </div>
-//           </div>
-//         </div>

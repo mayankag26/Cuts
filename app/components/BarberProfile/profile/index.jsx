@@ -7,7 +7,6 @@ import Post from "../userReviews";
 import ServiceAvailable from "../serviceAvailable";
 import ShopLocation from "../shopLocation";
 
-import Booknow from "../bookNow";
 
 export default function Profile(props) {
   const [barber, setBarber] = useState({});
@@ -15,7 +14,7 @@ export default function Profile(props) {
   let idd = props.idd;
   let img =
     "https://static.vecteezy.com/system/resources/thumbnails/004/141/669/small/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg";
-  // console.log(barber)
+  console.log(barber);
   let msg = "No reviews";
   const [textareaValue, setTextareaValue] = useState("");
   const [comments, setComments] = useState("");
@@ -29,7 +28,7 @@ export default function Profile(props) {
     async function getBarber() {
       let data = await fetch(`http://localhost:3000/api/barber/${idd}`, {
         method: "GET",
-      }); //fetching data from backend API endpoints
+      }); 
       if (!data.ok) {
         throw new Error(`HTTP error! Status: ${data.status}`);
       }
@@ -108,8 +107,9 @@ export default function Profile(props) {
       let minutes = parseInt(timeString[3]) * 10 + parseInt(timeString[4]);
       console.log(minutes);
     }
-    // console.log(hr);
   }
+
+  // console.log(barber);
   return (
     <div>
       {/* <div>Hello {props.id}</div> */}
@@ -265,10 +265,12 @@ export default function Profile(props) {
           >
             BOOK SLOT NOW
           </button>
+          
         </div>
-        <div class="my-3 text-lg bg-gray-700 p-2 text-white rounded-lg">
+        <div class="my-3 text-lg bg-gray-700 p-2 text-white rounded-lg ml-auto mr-auto">
           Explore Our Range of Services
         </div>
+
         <div className="w-[1250px]">
           <ServiceAvailable services={barber.services} />
         </div>
@@ -276,70 +278,12 @@ export default function Profile(props) {
           <Slider reviews={barber.reviews} />
         </div>
         <div className="w-full border-3 md:border-2 p-4 relative">
-          <Post comments={comments} />
+          <Post comments={barber.reviews} />
           <div className="absolute inset-0 z-5 border border-transparent hover:border-black-1000 transition-colors duration-300"></div>
         </div>
-        {/* <div>{textareaValue}</div> */}
+
         <ShopLocation />
       </div>
     </div>
   );
 }
-
-// ----------------------------------------------------comments addition code------------
-//   This below code  is for adding comments
-
-// <div className=" w-full border-3 md:border-2 p-4 z-5">
-//   <h1 className="text-3xl font-bold text-gray-800 mb-6">
-//     Write your own comment..
-//   </h1>
-//   <textarea
-//     value={textareaValue}
-//     onChange={handleTextareaChange}
-//     className="border-2 rounded-md p-2 w-full h-full resize-none focus:outline-none focus:ring focus:border-blue-500"
-//   ></textarea>
-//   <button
-//     onClick={handleClicked}
-//     className="rounded-lg px-10 py-3 text-sm font-semibold border-1 bg-blue-900 text-white border-black shadow-sm hover:bg-blue-600 hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
-//   >
-//     POST
-//     {/* {console.log(textareaValue)}
-//     {console.log(clicked)} */}
-//   </button>
-// </div>
-
-// --------------------------------------------------------------------------------
-
-// ---------------------time--------------
-
-// <div className="text-sm md:text-lg lg:text-xl text-gray-700 mt-2">
-//   {func()} - let OpeningTime = barber.openingTime; var openingTimeComponents =
-//   timeStringToObject(OpeningTime); console.log(openingTimeComponents.hours);
-//   console.log(openingTimeComponents.minutes);
-//   console.log(openingTimeComponents.meridiem); let ClosingTime =
-//   barber.closingTime; var closingTimeComponents =
-//   timeStringToObject(ClosingTime); console.log(closingTimeComponents.hours);
-//   console.log(closingTimeComponents.minutes);
-//   console.log(closingTimeComponents.meridiem);
-//   {openingTimeComponents.hours && openingTimeComponents.hours < 12
-//     ? openingTimeComponents.hours + "am "
-//     : (openingTimeComponents.hours % 12) + "pm "}
-//   {closingTimeComponents.hours < 12
-//     ? closingTimeComponents.hours + "am "
-//     : (closingTimeComponents.hours % 12) + "pm "}
-//   (Today)
-// </div>;
-
-// <div className="text-sm md:text-lg lg:text-xl text-gray-700 mt-2">
-//   {func()} -{" "}
-//   {barber.openingTime < 12
-//     ? barber.openingTime + "am "
-//     : (barber.openingTime % 12) + "pm "}
-//   -
-//   {barber.closingTime < 12
-//     ? barber.closingTime + " am "
-//     : (barber.closingTime % 12) + " pm "}
-//   (Today)
-// </div>;
-
-// ----------------------------------------------
