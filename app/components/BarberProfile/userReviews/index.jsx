@@ -1,34 +1,27 @@
 import React from "react";
-let arr=["static"]
 
-const CommentSection = ({comments}) => {
-  if(comments) arr=comments
+const CommentSection = ({ comments }) => {
+  let arr = [];
+  if (comments) arr = comments;
+  console.log(comments);
   return (
-    <>
-      <h1 className="text-3xl font-bold text-gray-800 mb-6">
-        User Comments...
-      </h1>
-      
-      
-        {/* <strong>Sarah</strong>{" "} */}
-        {/* <span className="text-xs text-gray-400">3:34 PM</span> */}
-        
-          {arr.map((item, index) => (
-          <div className=" border-2 rounded-lg px-10 py-2 sm:py leading-relaxed">
-          <div key={index} className="container m-auto w-10/12">
-            <div className="">
-             <div>
-             <p className="text-sm text-gray-700">
-              {item}
-              </p>
-              </div>
+    <div>
+      <div className="comment-section">
+        <h1 className="text-3xl font-bold text-gray-800 mb-6">
+          User Comments...
+        </h1>
+        {arr.map((item, index) => (
+          <div
+            key={index}
+            className="flex items-center mb-4 comment-container hover:z-10 transition-all duration-300"
+          >
+            <div className="flex-1 border rounded-lg px-4 py-2 sm:px-6 sm:py-4 leading-relaxed">
+              <p className="text-sm mt-2 ">{item.comment}</p>
             </div>
           </div>
-          </div>
         ))}
-
-      
-    </>
+      </div>
+    </div>
   );
 };
 
