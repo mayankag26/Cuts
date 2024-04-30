@@ -8,6 +8,7 @@ import connectMongoDB from "@/libs/mongodb";
     try {
     const data=await salons.find();
     const currentLocation=content.params.location.toLowerCase();
+    // console.log(currentLocation);
     const filterdata=data.filter((item)=>(((item?.city?.toLowerCase())))===(currentLocation) )
     // console.log(filterdata);
     return NextResponse.json({result:filterdata},{status:200})

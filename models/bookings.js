@@ -8,13 +8,15 @@ const bookingsSchema = new Schema(
     salonid: {
         type: String
     },
-    queueCheck: {
+    useremail:{
+        type:String
+    },
+    status: {
         type: Boolean // true means currently in queue ans false means service has been provided to customer
     },
-    time: { 
+    queueNo: { 
         type: Number //time of booking, not which slot but time at which queue number booked by user
     },
-
     rating: {
         type: Number //rating given by user
     },

@@ -16,3 +16,17 @@ export async function POST(req) {
     );
   }
 }
+export async function GET(request,content)
+{
+    //await connectMongoDB();
+    // console.log("get request of getting all users");
+    // console.log(request);
+    // console.log(content);
+    try {
+    const data=await Users.find();
+    return NextResponse.json({result:data},{status:200})
+   } catch (error) {    
+    console.error("Error fetching user data:", error);
+    return NextResponse.error(error);
+    }
+}

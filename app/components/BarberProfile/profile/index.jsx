@@ -4,8 +4,10 @@ import Link from "next/link";
 import Slider from "../userReviewImage";
 import { useState } from "react";
 import Post from "../userReviews";
+import Bookingform from "../../booking/Bookingform";
 
 export default function Profile(props) {
+ 
   const [barber,setBarber]=useState({});
   let idd=props.idd
   let img='https://static.vecteezy.com/system/resources/thumbnails/004/141/669/small/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg'
@@ -163,12 +165,7 @@ export default function Profile(props) {
           </div>
         </div>
         <div>
-          <button
-            type="button"
-            className="rounded-lg px-10 py-3 text-sm font-semibold border-1 bg-blue-900 text-white border-black shadow-sm hover:bg-blue-600 hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
-          >
-            BOOK SLOT NOW
-          </button>
+         <Bookingform salonid={idd} availableNumber={barber?.availableNumber}></Bookingform> 
         </div>
         <div className="my-3 text-lg bg-gray-700 p-2 text-white rounded-lg">
           Services Available

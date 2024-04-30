@@ -12,7 +12,9 @@ function checkHomeshop(currentshop) {
     console.log("Error: salontype property is missing in currentshop");
     return false;
   }
-  return currentshop.salontype === "individual";
+  let str=currentshop.salontype;
+  str=str.toLowerCase();
+  return str === "individual";
 }
 
 function HomeShops(props) {
@@ -25,9 +27,9 @@ function HomeShops(props) {
         });
         const data = await response.json();
         const list2 = (await data)?.result;
-        console.log(list2);
+        // console.log(list2);
         const res = list2.filter(checkHomeshop);
-        console.log(res);
+        // console.log(res);
         setList(res);
       } catch (err) {
         console.log(err);
@@ -42,7 +44,7 @@ function HomeShops(props) {
         <div className="card">
           <div className="relative flex  w-[20rem] h-[20rem] flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-lg">
             <div className="relative mx-4 mt-4 overflow-hidden text-white shadow-lg rounded-xl bg-blue-gray-500 bg-clip-border shadow-blue-gray-500/40">
-              <img  className ="h-[12rem] w-full"src={`${item?.images[0]}`} alt={item?.name} />
+              <img  className ="h-[12rem] w-full"src={`${item?.imagesUrl}`} alt={item?.name} />
             </div>
             <div className="p-3">
               <div className="flex items-center justify-between mb-3">

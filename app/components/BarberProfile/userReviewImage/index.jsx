@@ -90,7 +90,7 @@ const Slider = ({reviews}) => {
               </div>
              <div >{item.comment}</div>
             </div>
-          </div>
+          </div>        
         ))}
       </Carousel>
     </div>
