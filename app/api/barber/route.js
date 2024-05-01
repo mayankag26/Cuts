@@ -5,7 +5,7 @@ export async function PUT(req) {
     try {
       const { salonid, availableNumber } = await req.json();
       //await connectMongoDB();
-      await Salons.findOneAndUpdate({_id:salonid},{$set:{ availableNumber:availableNumber}});
+      await Salons.findOneAndUpdate({_id:salonid},{$set:{ availableNumber:availableNumber+1}});
   
       return NextResponse.json({ message: "available number  edited." }, { status: 201 });
     } catch (error) {

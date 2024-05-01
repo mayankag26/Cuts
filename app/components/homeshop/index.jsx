@@ -44,7 +44,7 @@ function HomeShops(props) {
         <div className="card">
           <div className="relative flex  w-[20rem] h-[20rem] flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-lg">
             <div className="relative mx-4 mt-4 overflow-hidden text-white shadow-lg rounded-xl bg-blue-gray-500 bg-clip-border shadow-blue-gray-500/40">
-              <img  className ="h-[12rem] w-full"src={`${item?.imagesUrl}`} alt={item?.name} />
+              <img  className ="h-[12rem] w-full"src={`${item?.imagesUrl[0]}`} alt={item?.name} />
             </div>
             <div className="p-3">
               <div className="flex items-center justify-between mb-3">

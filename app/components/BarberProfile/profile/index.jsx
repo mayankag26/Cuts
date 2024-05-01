@@ -11,6 +11,7 @@ import Bookingform from "../../booking/Bookingform";
 export default function Profile(props) {
   const [barber, setBarber] = useState({});
   const [clicked, setClicked] = useState(false);
+  const [availableNumber,setavailableNumber]=useState();
   let idd = props.idd;
   let img =
     "https://static.vecteezy.com/system/resources/thumbnails/004/141/669/small/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg";
@@ -36,6 +37,7 @@ export default function Profile(props) {
         data = await data.json();
         // console.log(data)
         setBarber(data.result);
+        setavailableNumber(data.result?.availableNumber);
         setComments(data.result.comments);
       } catch (error) {
         console.error(error);
@@ -102,7 +104,7 @@ export default function Profile(props) {
   function displayTime(timeString) {
     // let hr = timeString[0] * 10 + timeString[1];
     if (timeString) {
-      console.log(timeString[0]);
+      // console.log(timeString[0]);
       let hours = parseInt(timeString[0]) * 10 + parseInt(timeString[1]);
       let minutes = parseInt(timeString[3]) * 10 + parseInt(timeString[4]);
       console.log(minutes);
@@ -131,8 +133,8 @@ export default function Profile(props) {
                   className="object-cover w-full h-full transform transition-transform duration-300 hover:scale-105"
                   height="200"
                   src={
-                    barber.images && barber.images.length > 0
-                      ? barber.images[0]
+                    barber.imagesUrl && barber.imagesUrl.length > 0
+                      ? barber.imagesUrl[0]
                       : img
                   }
                   style={{
@@ -152,8 +154,8 @@ export default function Profile(props) {
                     className="object-cover w-full h-full transform transition-transform duration-300 hover:scale-105"
                     height="100"
                     src={
-                      barber.images && barber.images.length > 0
-                        ? barber.images[1]
+                      barber.imagesUrl && barber.imagesUrl.length > 0
+                        ? barber.imagesUrl[1]
                         : img
                     }
                     style={{
@@ -171,8 +173,8 @@ export default function Profile(props) {
                     className="object-cover w-full h-full transform transition-transform duration-300 hover:scale-105"
                     height="100"
                     src={
-                      barber.images && barber.images.length > 0
-                        ? barber.images[2]
+                      barber.imagesUrl && barber.imagesUrl.length > 0
+                        ? barber.imagesUrl[2]
                         : img
                     }
                     style={{
@@ -192,8 +194,8 @@ export default function Profile(props) {
                     alt="Burger 2"
                     className="object-cover w-full h-full bg-blue-500"
                     src={
-                      barber.images && barber.images.length > 0
-                        ? barber.images[2]
+                      barber.imagesUrl && barber.imagesUrl.length > 0
+                        ? barber.imagesUrl[2]
                         : img
                     }
                   />
@@ -204,7 +206,7 @@ export default function Profile(props) {
           </div>
         </div>
         <div className="sm:text-0.5xl md:text-1xl lg:text-2xl xl:text-2.5xl font-bold flex flex-row justify-between w-full">
-          <div>{barber.name}</div>
+          <div>{barber?.name}</div>
           <div>
             <div className="flex items-center">
               <svg
@@ -217,7 +219,7 @@ export default function Profile(props) {
                 <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
               </svg>
               <p className="ms-1 text-sm font-medium text-black-500 dark:text-gray-400 ">
-                <b> {barber.rating} out of 5 </b>
+                <b> {barber?.rating} out of 5 </b>
               </p>
             </div>
           </div>
@@ -251,28 +253,28 @@ export default function Profile(props) {
 
         <div className="flex flex-row justify-center py-1">
           <div className="rounded-lg px-3 py-2.5 text-sm font-semibold border-1 border-black shadow-sm hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black">
-            Current Number in queue: {barber.currentNumber}
+            Current Number in queue: {barber?.currentNumber}
           </div>
           <div className="lg:w-4 md:w-1"></div>
           <div className="rounded-lg px-3 py-2.5 text-sm font-semibold border-1 border-black shadow-sm hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black">
-            Available Number: {barber.availableNumber}
+            Available Number: {availableNumber}
           </div>
         </div>
         <div className="z-10">
-         <Bookingform salonid={idd} availableNumber={barber?.availableNumber}></Bookingform> 
+         <Bookingform salonid={idd} availableNumber={availableNumber} setavailableNumber={setavailableNumber}></Bookingform> 
         </div>
         <div class="my-3 text-lg bg-gray-700 p-2 text-white rounded-lg ml-auto mr-auto">
           Explore Our Range of Services
         </div>
 
         <div className="w-[1250px]">
-          <ServiceAvailable services={barber.services} />
+          <ServiceAvailable services={barber?.services} />
         </div>
         <div className=" w-full border-3 md:border-2 p-4 z-5">
-          <Slider reviews={barber.reviews} />
+          <Slider reviews={barber?.reviews} />
         </div>
         <div className="w-full border-3 md:border-2 p-4 relative">
-          <Post comments={barber.reviews} />
+          <Post comments={barber?.reviews} />
           <div className="absolute inset-0 z-5 border border-transparent hover:border-black-1000 transition-colors duration-300"></div>
         </div>
 

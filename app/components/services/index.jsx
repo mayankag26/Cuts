@@ -11,7 +11,7 @@ const Services = (props) => {
           props.color === 1 ? 'bg-slate-400' : 'bg-slate-100'
         }`}
         onClick={() => {
-          console.log("barbershop clicked");
+          // console.log("barbershop clicked");
           props.setColor(1);
         }}
       >
@@ -23,7 +23,7 @@ const Services = (props) => {
           props.color === 0 ? 'bg-slate-400' : 'bg-slate-100'
         }`}
         onClick={() => {
-          console.log("barberhome clicked");
+          // console.log("barberhome clicked");
           props.setColor(0);
         }}
       >

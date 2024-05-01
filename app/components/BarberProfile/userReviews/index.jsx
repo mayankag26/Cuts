@@ -3,7 +3,7 @@ import React from "react";
 const CommentSection = ({ comments }) => {
   let arr = [];
   if (comments) arr = comments;
-  console.log(comments);
+  // console.log(comments);
   return (
     <div>
       <div className="comment-section">

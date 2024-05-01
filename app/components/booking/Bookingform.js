@@ -6,13 +6,10 @@ import Bookings from "@/models/bookings";
 import mongoose from "mongoose";
 import Users from "@/models/users";
 import { useEffect } from "react";
-function Bookingform({ salonid, availableNumber }) {
+function Bookingform({ salonid, availableNumber ,setavailableNumber}) {
   const { data } = useSession();
   // need to check user is login or not
   const [model, setModel] = useState(false);
-
-  // console.log(data);
-
   const [formData, setFormData] = useState({
     userEmail: data?.user.email,
     userName: data?.user.name,
@@ -25,7 +22,7 @@ function Bookingform({ salonid, availableNumber }) {
   };
   let useremail = data?.user.email;
   let username = data?.user.name;
-  let status = true;
+  let status = false;
   let queueNo = availableNumber;
   let contactno = "882288282";
   let address = "jsjkhfu jdhugfh jshdh";
@@ -58,21 +55,22 @@ function Bookingform({ salonid, availableNumber }) {
           },
           body: JSON.stringify({ userid, salonid, useremail, status, queueNo }),
         });
-        availableNumber=parseInt(availableNumber)+1;
-        console.log(availableNumber);
-          let updateavailableNumber = await fetch("http://localhost:3000/api/barber", {
-            method: "PUT",
-            headers: {
-              "Content-type": "appplication/json",
-            },
-            body: JSON.stringify({salonid,availableNumber }),
-          });
+
+        // console.log(availableNumber);
+        let updateavailableNumber = await fetch("http://localhost:3000/api/barber", {
+          method: "PUT",
+          headers: {
+            "Content-type": "appplication/json",
+          },
+          body: JSON.stringify({salonid,availableNumber }),
+        });
         if (result.status == 201) {
           alert("BOOKING SUCCESSFULL");
         } else {
           alert("BOOKING UNSUCCESSFULL");
         }
-    
+        setavailableNumber(availableNumber+1);
+       
       }
     } catch (err) {
       console.log(err);

@@ -17,13 +17,13 @@ const SalonSchema = new Schema(
     address: {
       type: String
     },
-    detail: {
-      type: String
-    },
     city: {
       type: String
     },
-    images: {
+    contactNo:{
+      type: Number
+    },
+    imagesUrl: {
       type: []
     },
     services: {
@@ -35,12 +35,11 @@ const SalonSchema = new Schema(
     reviews: {
       type: []  //array of two object, first object with key images and other object with key comments
     },
-    comments:{
-      type:[]  //array of comments 
-    },
     salontype: {
       type: String  //two options - "salon" and "individual"
     },
+
+    //for salon type "salon"
     openingTime: {
       type: String
     },
@@ -48,11 +47,21 @@ const SalonSchema = new Schema(
       type: String
     },
     currentNumber : {
-      type: Number
+      type: Number,
+      default : 0
     },
     availableNumber : {
-      type: Number
+      type: Number,
+      default : 0
     },
+    detail:{
+      type: String
+    },
+    genderServing:{
+      type: String
+    },
+
+    //for salon type "individual"
     timeSlots : {
       type: []  //array of objects with key as time slot and value 0 or 1 specifiying slot available or booked. eg. [ {9-10,1},{10-11,0} ]
     }

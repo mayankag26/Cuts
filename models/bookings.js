@@ -27,6 +27,7 @@ const bookingsSchema = new Schema(
         type: [] //array containing links of images
     }
   },
+  { timestamps: true }
 );
 
 const Bookings = models?.Bookings || mongoose.model("Bookings", bookingsSchema);
