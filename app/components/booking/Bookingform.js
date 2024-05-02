@@ -6,8 +6,13 @@ import Bookings from "@/models/bookings";
 import mongoose from "mongoose";
 import Users from "@/models/users";
 import { useEffect } from "react";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 function Bookingform({ salonid, availableNumber ,setavailableNumber}) {
   const { data } = useSession();
+  const router = useRouter();
+  // console.log(data);
+  
   // need to check user is login or not
   const [model, setModel] = useState(false);
   const [formData, setFormData] = useState({
@@ -16,6 +21,15 @@ function Bookingform({ salonid, availableNumber ,setavailableNumber}) {
     contactNo: "", // Fixed default value
     Address: "", // Default value
   });
+
+  const handleBookNow = ()=>{
+    if(data===null)
+    {
+      router.replace('/login');
+      return;
+    }
+    setModel(true);
+  }
 
   const handleChange = (event) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
@@ -28,9 +42,10 @@ function Bookingform({ salonid, availableNumber ,setavailableNumber}) {
   let address = "jsjkhfu jdhugfh jshdh";
 
   const handleSubmit = async (event) => {
+    
     event.preventDefault();
     try {
-      let response = await fetch("http://localhost:3000/api/users/userExists", {
+      let response = await fetch("/api/users/userExists", {
         cache: "no-store",
       });
       const userData = await response.json();
@@ -48,7 +63,7 @@ function Bookingform({ salonid, availableNumber ,setavailableNumber}) {
           alert("Fill Address in Your Profile");
         }
       } else {
-        let result = await fetch("http://localhost:3000/api/bookings", {
+        let result = await fetch("/api/bookings", {
           method: "POST",
           headers: {
             "Content-type": "appplication/json",
@@ -57,7 +72,7 @@ function Bookingform({ salonid, availableNumber ,setavailableNumber}) {
         });
 
         // console.log(availableNumber);
-        let updateavailableNumber = await fetch("http://localhost:3000/api/barber", {
+        let updateavailableNumber = await fetch("/api/barber", {
           method: "PUT",
           headers: {
             "Content-type": "appplication/json",
@@ -80,7 +95,7 @@ function Bookingform({ salonid, availableNumber ,setavailableNumber}) {
   return (
     <div>
       <button
-        onClick={() => setModel(true)}
+        onClick={() => handleBookNow() }
         type="button"
         className="rounded-lg px-10 py-3 text-sm font-semibold border-1 bg-blue-900 text-white border-black shadow-sm hover:bg-blue-600 hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
       >

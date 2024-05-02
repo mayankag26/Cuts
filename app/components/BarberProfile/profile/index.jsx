@@ -27,7 +27,7 @@ export default function Profile(props) {
   }
   useEffect(() => {
     async function getBarber() {
-      let data = await fetch(`http://localhost:3000/api/barber/${idd}`, {
+      let data = await fetch(`/api/barber/${idd}`, {
         method: "GET",
       }); 
       if (!data.ok) {
@@ -50,7 +50,7 @@ export default function Profile(props) {
     if (clicked) {
       async function getComment() {
         try {
-          let res = await fetch(`http://localhost:3000/api/barber/${idd}`, {
+          let res = await fetch(`/api/barber/${idd}`, {
             method: "POST",
             body: JSON.stringify(textareaValue),
             headers: {
@@ -107,7 +107,7 @@ export default function Profile(props) {
       // console.log(timeString[0]);
       let hours = parseInt(timeString[0]) * 10 + parseInt(timeString[1]);
       let minutes = parseInt(timeString[3]) * 10 + parseInt(timeString[4]);
-      console.log(minutes);
+      // console.log(minutes);
     }
   }
 

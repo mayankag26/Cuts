@@ -12,7 +12,7 @@ export default function Nav() {
   // const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
   const { status, data } = useSession();
-  console.log(status);
+  // console.log(status);
  
   const router = useRouter();
   
