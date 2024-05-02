@@ -86,8 +86,9 @@ function Bookingform({ salonid, availableNumber ,setavailableNumber}) {
       >
         BOOK SLOT NOW
       </button>
-      {model && <dialog
-        className="bg-white text-blue min-h-[500px] min-w-[400px] z-10 fixed bottom-10 left-0 p-10"
+      {model && 
+      <dialog
+        className="bg-slate-200 text-blue min-h-[450px] min-w-[450px] z-10 fixed bottom-[10rem] left-0 p-10 rounded-lg border-1 border-black"
         open={true}
       >
         <h1 className="text-black font-bold">
